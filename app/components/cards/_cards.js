@@ -18,7 +18,7 @@ angular.module('rerere.cards', cardlist.map(function(c){return 'rerere.cards.' +
 .factory('cards', cardlist.concat(function(){
   var ns = {}
 
-  for(let i in arguments){
+  for(var i in arguments){
     ns[cardlist[i]] = arguments[i]
   }
 
