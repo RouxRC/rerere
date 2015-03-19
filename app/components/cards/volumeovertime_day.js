@@ -15,11 +15,13 @@ angular.module('rerere.cards.volumeovertime_day', [])
         .append($('<div class="volumeovertime_day"></div>'))
 
       // Initialize date formats we will use later
-      var day     = d3.time.format("%w")
+      var hour    = d3.time.format("%Y-%m-%dT%H:00")
+        , day     = d3.time.format("%w")
         , week    = d3.time.format("%U")
         , month   = d3.time.format("%m")
         , year    = d3.time.format("%Y")
         , format  = d3.time.format("%Y-%m-%d")
+        , format  = hour
 
       var data = d3.nest()
         .key(function(d) {
@@ -49,7 +51,8 @@ angular.module('rerere.cards.volumeovertime_day', [])
           .scale(x)
           .orient("bottom")
           .ticks(d3.time.days, 1)
-          .tickFormat(d3.time.format('%d'))
+          //.tickFormat(d3.time.format('%d'))
+          .tickFormat(d3.time.format('%HH'))
           .tickSize(0)
           .tickPadding(8);
 
