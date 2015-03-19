@@ -127,10 +127,13 @@ angular.module('rerere.view_board', ['ngRoute'])
 
     // Add starting cards
     // addCard('calendarview', 'timestamp')
-    // addCard('wordcloud', 'text')
-    // addCard('topwords', 'text')
-    addCard('topitems', 'lang')
-    // addCard('volumeovertime_day', 'timestamp')
+    addCard('volumeovertime_day', 'timestamp')
+    addCard('wordcloud', 'text')
+    addCard('topwords', 'text')
+    addCard('wordcloud', 'hashtags')
+    addCard('topwords', 'hashtags')
+    addCard('topitems', 'urls')
+    addCard('topitems', 'user_screen_name')
     addCard('mapcoordinates', 'coordinates')
 
     // Load Test CSV

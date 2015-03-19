@@ -56,9 +56,27 @@ output = input.filter(function(item, i){
     // return i &lt; 10;
 
     // return i%100 === 0;
-    return item.coordinates &amp;&amp; item.coordinates != '0.0::0.0';
+    //return item.coordinates &amp;&amp; item.coordinates != '0.0::0.0';
+    return new Date(item.timestamp) > new Date('2015-03-17');
 
-});</pre>
+}).map(function(item) {
+    item.hashtags = item.text.split(" ").filter(function(a){return a.indexOf('#') === 0;}).join(" ");
+    item.urls = item.text.split(" ").filter(function(a){return a.indexOf('http') === 0 && a.indexOf('/photo/1') === -1; }).join(" ");
+    item.user_screen_name = "@"+item.user_screen_name;
+    item.text = item.text
+        .replace(/(^|\s)@[^\s]+/g, " ")
+        .replace(/[^a-zàéèîïêâëöôù'\s]/ig, "")
+        .replace(/immunit[eé](\s*parlementaire)?/ig, "immunité_parlementaire")
+        .replace(/assembl[eé]+(\s*nationale)?/ig, "assemblée_nationale")
+        .replace(/patrick\s*balkany/ig, "balkany")
+        .replace(/montages?\s*offshores?/ig, "montages_offshores")
+        .replace(/jet[eér]\s*aux\s*chiens/ig, "jeté_aux_chiens")
+        .replace(/(les\s*)?(heures\s*les)?\s*plus\s*sombres\s*(heures)?\s*de\s*notre\s*histoire/ig, "plus_sombres_heures_de_notre_histoire")
+        ;
+    return item;
+});
+
+</pre>
               </div>
             </div>
             <div class="split-pane-divider" id="horizontal-divider-2">
